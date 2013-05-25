@@ -1,0 +1,60 @@
+﻿<?xml version="1.0"?>
+<project name="Compress and minify CSS and JS" default="initialize">
+
+  <target name="concat_css">
+      <concat destfile="${assets_dir}/style.min.css">
+          <filelist id="files" dir="${css_dir}">
+            <file name="bootstrap.css" /> 
+            <file name="bootstrap-responsive.css" /> 
+            <file name="main.css" /> 
+        </filelist>
+      </concat>
+  </target>
+  
+    <target name="concat_js">
+      <concat destfile="${assets_dir}/script.min.js">
+          <filelist id="files" dir="${js_dir}">
+            <file name="bootstrap.js" /> 
+            <file name="easyscroll.js" /> 
+            <file name="main.js" /> 
+        </filelist>
+      </concat>
+  </target>
+  
+  <property environment="env" />
+  <property name="antlib_dir" value="${env.ANT_HOME}/lib" />
+  
+  <property name="assets_dir" value="assets" />
+  <property name="js_dir" value="${assets_dir}/js" />
+  <property name="css_dir" value="${assets_dir}/css" />
+  
+  <target name="compress">
+    <java jar="${antlib_dir}/yuicompressor-2.4.7.jar" fork="true">
+        <arg value="${file}" />
+        <arg value="-o" />
+        <arg value="${file}" />
+    </java>
+    <echo>${file}</echo> 
+</target>
+
+<target name="compress_css" depends="concat_css">
+    <antcall target="compress">
+        <param name="file" value="${assets_dir}/style.min.css" />
+    </antcall>
+    <checksum file="${assets_dir}/style.min.css"/>
+</target>
+
+<target name="compress_js" depends="concat_js">
+    <antcall target="compress">
+        <param name="file" value="${assets_dir}/script.min.js" />
+    </antcall>
+    <checksum file="${assets_dir}/script.min.js"/>
+</target>
+ 
+ <target name="initialize">
+    <antcall target="compress_css" />
+    <antcall target="compress_js" />
+    <echo>Done!</echo>
+</target>
+ 
+</project>

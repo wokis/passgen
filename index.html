@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Password Generator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Password generator with multiple options.">
+    <meta name="author" content="Kacper B.">
+    <link href="assets/style.min.css?v=8ac834b0" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container-narrow">
+      <div class="jumbotron">
+        <h3>Your generated password is</h3>
+        <h1 id="passgen"></h1>
+        <p class="lead">Remember to keep your password safe and to change it often</p>
+        <a class="btn btn-large btn-success" id="generate" href="#">Generate new</a> <a class="btn btn-large scroll" href="#options" data-toggle="collapse" data-target="#options"><i class="icon-wrench"></i> More options</a>
+      </div>
+      <div class="row-fluid collapse" id="options">
+          <h3>Options</h3>
+          <label for="maxLength">Password length</label>
+          <div class="input-append">
+            <input class="input-mini" id="maxLength" value="8" type="number" required>
+            <span class="add-on">characters</span>
+          </div>
+          <label class="checkbox">
+            <input type="checkbox" id="chLetters" checked="checked"> Include letters
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" id="chNumbers" checked="checked"> Include numbers
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" id="chUpperCase" checked="checked"> Include UPPER CASE
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" id="chNoSimilar" checked="checked"> Exclude similar characters
+          </label>
+          <label class="checkbox">
+            <input type="checkbox" id="chPunctuation"> Include punctuation, such as @ and &
+          </label>
+      </div>
+      <hr>
+      <div class="row-fluid list">
+          <h3>List of last generated passwords</h3>
+          <ul id="generated"></ul>
+      </div>
+
+      <hr>
+
+      <div class="footer">
+        <p>Password Generator v1.12. Created by Kacper B.<br />Licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>. Made working by <a href="http://twitter.github.io/bootstrap/">Bootstrap</a> and <a href="http://jquery.com/">jQuery</a>.</p>
+      </div>
+
+    </div>
+    <script src="assets/script.min.js?v=d7dcde4d"></script>
+  </body>
+</html>
