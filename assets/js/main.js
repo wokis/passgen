@@ -27,7 +27,7 @@ function generatePassword(options) {
         }
 
         if (options.punctuation) {
-            punctuation = "!?$?%^&*()_-+=@~#<>?";
+            punctuation = "!?$%^&*()_-+=@~#<>";
             keyspace += punctuation;
         }
     }
@@ -79,7 +79,7 @@ function generatePassword(options) {
         for ( var i = 0; i < punctuation.length; i++ )
         {
             // Break if we find a punctuation
-            if (result.indexOf(punctuation.charAt(i))) break;
+            if (result.indexOf(punctuation.charAt(i)) != -1) break;
             //console.log('Password generated but no punctuation found. Regenerating.');
             return generatePassword(options);
         }
